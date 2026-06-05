@@ -1,0 +1,31 @@
+class Patient:
+    def __init__(self, name, age, heartRate, spo2):
+        self.name = name
+        self.age = age
+        self.heartRate = heartRate
+        self.spo2 = spo2
+    def assessStatus(self):
+        status = "Stable"
+        if self.heartRate < 60:
+            print("Warning: Heart Rate is Low")
+            status = "Critical"
+        if self.heartRate > 100:
+            print("Warning: Heart Rate is High")
+            status = "Critical"
+        if self.spo2 < 95:
+            print("Warning: Low SpO2")
+            status = "Critical"
+        return status
+    def displayInfo(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("Heart Rate:", self.heartRate)
+        print("SpO2:", self.spo2)
+        print("Status:", self.assessStatus())
+        print()
+patient1 = Patient("Ali", 25, 72, 98)
+patient2 = Patient("Rameen", 40, 55, 97)
+patient3 = Patient("Eishal", 60, 110, 90)
+patient1.displayInfo()
+patient2.displayInfo()
+patient3.displayInfo()
