@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+class ECGReading
+{
+    int bme_rr;
+    int bme_qrs;
+public:
+    ECGReading(int bme_rr, int bme_qrs)
+    {
+        this->bme_rr = bme_rr;
+        this->bme_qrs = bme_qrs;
+    }
+    void classify()
+    {
+        string bme_result;
+ // Boundary values:
+        if (bme_rr > 1000)
+        {
+            bme_result = "Bradycardia"; // because Bradycardia is RR > 1000 and Tachycardia is RR < 600.
+            if (bme_qrs > 120)
+                bme_result += " with Wide QRS";
+            else
+                bme_result += " with Narrow QRS";
+        }
+        else if (bme_rr < 600)
+        {
+            bme_result = "Tachycardia"; // RR = 600 ms and RR = 1000 ms are classified as Normal Rhythm
+            if (bme_qrs > 120)
+                bme_result += " with Wide QRS"; // QRS = 120 ms is classified as Narrow QRS because only values
+            else
+                bme_result += " with Narrow QRS";
+        }
+        else
+        {
+            bme_result = "Normal Rhythm";
+            if (bme_qrs > 120)
+                bme_result += " with Wide QRS";
+            else
+                bme_result += " with Narrow QRS";
+        }
+        cout << bme_result << endl;
+    }
+};
+int main()
+{
+ECGReading bme_e1(1200, 130);
+ECGReading bme_e2(500, 100);
+ECGReading bme_e3(800, 125);
+ECGReading bme_e4(700, 100);
+bme_e1.classify();
+bme_e2.classify();
+bme_e3.classify();
+bme_e4.classify();
+    return 0;
+}
