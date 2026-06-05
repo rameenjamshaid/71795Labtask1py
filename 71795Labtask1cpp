@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+class Patient
+{
+    string name;
+    int age;
+    int heartRate;
+    int spo2;
+public:
+    Patient(string name, int age, int heartRate, int spo2)
+    {
+        this->name = name;
+        this->age = age;
+        this->heartRate = heartRate;
+        this->spo2 = spo2;
+    }
+    string assessStatus()
+    {
+        string status = "Stable";
+        if (heartRate < 60)
+        {
+            cout << "Warning: Heart Rate is Low" << endl;
+            status = "Critical";
+        }
+        if (heartRate > 100)
+        {
+            cout << "Warning: Heart Rate is High" << endl;
+            status = "Critical";
+        }
+        if (spo2 < 95)
+        {
+            cout << "Warning: Low SpO2" << endl;
+            status = "Critical";
+        }
+        return status;
+    }
+    void displayInfo()
+    {
+        cout << "Name: " <<name<< endl;
+        cout << "Age: " <<age<< endl;
+        cout << "Heart Rate: " <<heartRate<< endl;
+        cout << "SpO2: " <<spo2<< endl;
+        cout << "Status: " << assessStatus() << endl;
+        cout << endl;
+    }
+};
+int main()
+{
+    Patient patient1("Ali", 25, 72, 98);
+    Patient patient2("Rameen", 40, 55, 97);
+    Patient patient3("Eishal", 60, 110, 90);
+    patient1.displayInfo();
+    patient2.displayInfo();
+    patient3.displayInfo();
+    return 0;
+}
