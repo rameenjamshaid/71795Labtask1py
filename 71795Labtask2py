@@ -10,9 +10,9 @@ class ECGReading:
             else:
                 result += " with Narrow QRS"
         elif self.rr < 600:
-            result = "Tachycardia"
+            result = "Tachycardia" # because Bradycardia is RR > 1000 and Tachycardia is RR < 600.
             if self.qrs > 120:
-                result += " with Wide QRS"
+                result += " with Wide QRS" # QRS = 120 ms is classified as Narrow QRS because only values
             else:
                 result += " with Narrow QRS"
         else:
